@@ -1,7 +1,30 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Book.destroy_all
+
+Book.create(
+title: 'Hyperion',
+autor: 'gustavo souza',
+description: 'texto descritivo deste livro',
+amazon_id:   "77657533",
+finished_on: 7.days.ago,
+rating: 4
+)
+
+Book.create(
+title: 'Hyperion 2',
+autor: 'gustavo souza',
+description: 'texto descritivo deste livro',
+amazon_id:   "77657534",
+finished_on: 3.days.ago,
+rating: 5
+)
+
+Book.create(
+title: 'Livro do mal',
+autor: 'Ze Ninguem',
+description: 'texto descritivo deste livro',
+amazon_id:   "77657533",
+finished_on: 1.days.ago,
+rating: 2
+)
+
+puts 'books succefuly created by seed!'
