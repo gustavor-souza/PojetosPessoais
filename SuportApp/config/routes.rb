@@ -1,10 +1,33 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD:SuportApp/config/routes.rb
   get 'static_pages/Home'
 
   get 'static_pages/About'
 
   get 'static_pages/Contact'
+=======
+  resources :comments
+>>>>>>> add-devise:SuportApp/config/routes.rb
 
+  resources :subjects
+
+  resources :systems
+
+  resources :tickets
+
+  resources :admins
+
+  resources :clients
+
+  get 'static_pages/home'
+
+  get 'static_pages/about'
+
+  get 'static_pages/contact'
+
+  get 'static_pages/help'
+
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
