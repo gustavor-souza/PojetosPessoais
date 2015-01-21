@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @ticket.title %>
+</p>
+
+<p>
+  <strong>Copy to:</strong>
+  <%= @ticket.copy_to %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @ticket.active %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @ticket.Client %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @ticket.Admin %>
+</p>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
