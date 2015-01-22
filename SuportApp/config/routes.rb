@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
 <<<<<<< HEAD:SuportApp/config/routes.rb
   get 'static_pages/Home'
 
@@ -6,6 +7,12 @@ Rails.application.routes.draw do
 
   get 'static_pages/Contact'
 =======
+=======
+  resources :companies
+
+  resources :admin_roles
+
+>>>>>>> add-devise
   resources :comments
 >>>>>>> add-devise:SuportApp/config/routes.rb
 
@@ -14,10 +21,6 @@ Rails.application.routes.draw do
   resources :systems
 
   resources :tickets
-
-  resources :admins
-
-  resources :clients
 
   get 'static_pages/home'
 

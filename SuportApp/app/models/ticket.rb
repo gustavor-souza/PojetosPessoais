@@ -1,5 +1,6 @@
 class Ticket < ActiveRecord::Base
-  has_one :client, dependent: :destroy
-  has_one :admin, dependent: :destroy
+  belongs_to :user
+  belongs_to :status
 
+  has_many :comments
 end
