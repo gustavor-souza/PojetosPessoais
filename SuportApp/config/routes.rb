@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :companies
+
+  resources :admin_roles
+
   resources :comments
 
   resources :subjects
@@ -6,10 +10,6 @@ Rails.application.routes.draw do
   resources :systems
 
   resources :tickets
-
-  resources :admins
-
-  resources :clients
 
   get 'static_pages/home'
 

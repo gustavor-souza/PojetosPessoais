@@ -4,13 +4,13 @@ class CreateTickets < ActiveRecord::Migration
       t.string :title
       t.string :copy_to
       t.boolean :active
-      t.references :Client
-      t.references :Admin
-      t.references :subjects
-      t.references :systems
-      t.references :status
+      t.references :user, index: true
+      t.references :subject, index: true
+      t.references :system, index: true
+      t.references :status, index: true
 
       t.timestamps null: false
     end
+    add_foreign_key :tickets, :users
   end
 end
