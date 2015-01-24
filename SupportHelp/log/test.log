@@ -1,0 +1,3 @@
+  [1m[36mActiveRecord::SchemaMigration Load (27.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (361.1ms)[0m  [1mDROP DATABASE IF EXISTS "Suport_Help_DB_test"[0m
+  [1m[35m (1264.3ms)[0m  CREATE DATABASE "Suport_Help_DB_test" ENCODING = 'unicode'
