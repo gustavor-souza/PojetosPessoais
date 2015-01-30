@@ -1,9 +1,18 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
-      ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      ## Database authenticatable and attributes
+      #  this entity is related with a company
+      t.string   :email,              null: false, default: ""
+      t.string   :encrypted_password, null: false, default: ""
+      t.string   :name
+      t.string   :ddd
+      t.string   :phone
+      t.boolean  :is_active
+      t.boolean  :is_client
+      t.boolean  :is_analyst
+      t.boolean  :is_manager
+
 
       ## Recoverable
       t.string   :reset_password_token
@@ -18,10 +27,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
-      t.boolean  :is_active
-      t.boolean  :is_client
-      t.boolean  :is_analyst
-      t.boolean  :is_manager
 
 
       ## Confirmable

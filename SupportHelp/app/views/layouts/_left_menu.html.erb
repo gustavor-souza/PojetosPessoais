@@ -1,0 +1,28 @@
+<div class='row-fluid container-fluid'>
+  <div id="MainMenu" class='col-sm-3'>
+     <div class="list-group panel">
+      <a href="#accord_ticket" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Tickets</a>
+      <div class="collapse" id="accord_ticket">
+
+        <a href="javascript:;" class="list-group-item">
+          <i class="icon-large icon-plus"></i> Criar Novo
+        </a>
+        <a href="javascript:;" class="list-group-item">
+          <i class="icon-large icon-time"> </i>
+          Ver recentes <span class="badge">7</span>
+          <i class="icon-large icon-bell"></i>
+        </a>
+        <a href="javascript:;" class="list-group-item">Pesquisar Soluções</a>
+
+      </div>
+      <a href="#accord_usuario" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Usuários</a>
+      <div class="collapse" id="accord_usuario">
+        <a href="" class="list-group-item"><i class="glyphicons glyphicons-group"></i>Gerenciar usuários</a>
+
+        <%= link_to "Editar meus dados", edit_user_registration_path(current_user)  %>
+
+        <a href="" class="list-group-item"><span class="glyphicons glyphicons-user"></span>Editar meus dados</a>
+      </div>
+    </div>
+  </div>
+</div>

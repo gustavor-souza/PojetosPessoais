@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root to: 'static_pages#home'
+
   resources :companies
 
   resources :comments
@@ -11,7 +14,8 @@ Rails.application.routes.draw do
 
   resources :systems
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
   get 'static_pages/about'
 
   get 'static_pages/home'
