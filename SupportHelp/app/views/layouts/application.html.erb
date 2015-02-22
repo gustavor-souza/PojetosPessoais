@@ -4,17 +4,30 @@
   <title>SupportHelp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render "layouts/navbar" %>
+<div class='container'>
+  <div class='row-fluid'>
+<% if current_user.present? && params[:controller] != "static_pages"%>
+    <div id="MainMenu" class="col-sm-3">
+      <%= render "layouts/left_menu" %>
+    </div>
+    <div id="MainContent" class="col-sm-7 col-sm-offset-1">
+      <%= yield %>
+    </div>
+<% else %>
+  <div id="MainMenu" class='col-sm-9'>
+    <%= yield %>
+  </div>
 
-<%= render "layouts/navbar" %>
-<%= render "layouts/left_menu" %>
+<% end %>
+</div>
+</div>
 
-<%= yield %>
-
-<%= render "layouts/footer" %>
-
+  <!-- <%= render "layouts/footer" %> -->
 
 </body>
 </html>

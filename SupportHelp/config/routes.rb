@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :comments
 
+
+  get 'tickets/remote', :as => 'remote_drop_donw'
+
   resources :tickets
 
   resources :priorities

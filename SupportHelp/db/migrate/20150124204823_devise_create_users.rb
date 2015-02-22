@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :name
       t.string   :ddd
       t.string   :phone
-      t.boolean  :is_active
+      t.boolean  :is_active, default: true
       t.boolean  :is_client
       t.boolean  :is_analyst
       t.boolean  :is_manager

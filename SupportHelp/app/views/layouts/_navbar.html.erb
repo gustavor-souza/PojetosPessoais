@@ -21,7 +21,7 @@
 
         <% if current_user.present? %>
           <%= button_to "Sair", destroy_user_session_path(current_user),
-               :class => "btn btn-danger navbar-btn", :method => :delete  %>
+               :class => "btn btn-default navbar-btn", :method => :delete  %>
         </div>
 
         <% else %>
