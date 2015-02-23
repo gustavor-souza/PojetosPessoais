@@ -4,6 +4,32 @@
 
 <table>
   <thead>
+
+    <div id='myGrid'>
+
+
+    <%= grid(@tasks_grid) do |g|
+
+    g.column name: 'Título' do |task|
+      task.title
+    end
+
+    g.column name: 'Sistema'  do |task|
+      task.system.name
+    end
+
+    g.column name: 'Status' do |task|
+      task.status.name
+    end
+
+    g.column name: 'Criado em' do |task|
+      task.created_at.strftime('%d/%m/%y %H:%M:%S')
+    end
+  end -%>
+
+
+    </div>
+
     <tr>
       <th>Title</th>
       <th>Active</th>
@@ -18,9 +44,9 @@
     <% @tickets.each do |ticket| %>
       <tr>
         <td><%= ticket.title %></td>
-        <td><%= ticket.System %></td>
-        <td><%= ticket.Subject %></td>
-        <td><%= ticket.Priority %></td>
+        <td><%= ticket.system.name %></td>
+        <td><%= ticket.status.name %></td>
+        <td><%= ticket.created_at %></td>
         <td><%= link_to 'Show', ticket %></td>
         <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
         <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,6 +54,7 @@
     <% end %>
   </tbody>
 </table>
+
 
 <br>
 

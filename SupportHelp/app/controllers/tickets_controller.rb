@@ -6,6 +6,7 @@ class TicketsController < ApplicationController
 
   def index
     @tickets = Ticket.by_user(current_user.id)
+    @tasks_grid = initialize_grid(@tickets)
     respond_with(@tickets)
   end
 
