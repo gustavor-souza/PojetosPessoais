@@ -9,7 +9,7 @@ class Ticket < ActiveRecord::Base
 
   scope :by_user, -> (client_id){where(client_id: client_id )}
 
-  validates :title, presence: true, length: {minimum: 1, maximum: 60}
+  validates :title, presence: true, length: {minimum: 1, maximum: 200}
 
   accepts_nested_attributes_for :comments
 
@@ -29,6 +29,6 @@ class Ticket < ActiveRecord::Base
       time = o[1]
     end
 
-    return "#{cute_date.join(' e ')} #{later}para uma resposta".gsub("-","")
+    return "#{cute_date.join(' e ')} #{later}".gsub("-","")
   end
 end

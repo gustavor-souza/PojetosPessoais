@@ -1,60 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tickets</h1>
-
-<table>
-  <thead>
+<h1>Tickets</h1>
 
     <div id='myGrid'>
 
 
     <%= grid(@tasks_grid) do |g|
 
-    g.column name: 'Título' do |task|
-      task.title
+    g.blank_slate content_tag(:div, "Nenhum ticket deste usuário", class: 'well')
+
+    g.column do |ticket|
+      link_to('abrir', edit_ticket_path(ticket.id))
     end
 
-    g.column name: 'Sistema'  do |task|
-      task.system.name
+    g.column name: 'Título' do |ticket|
+      ticket.title
     end
 
-    g.column name: 'Status' do |task|
-      task.status.name
+    g.column name: 'Criado em' do |ticket|
+      ticket.created_at.strftime('%d/%m/%y %H:%M:%S')
     end
 
-    g.column name: 'Criado em' do |task|
-      task.created_at.strftime('%d/%m/%y %H:%M:%S')
+    g.column name: 'Prazo' do |ticket|
+      ticket.time_to_respond
     end
+
   end -%>
 
 
     </div>
-
-    <tr>
-      <th>Title</th>
-      <th>Active</th>
-      <th>System</th>
-      <th>Subject</th>
-      <th>Priority</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tickets.each do |ticket| %>
-      <tr>
-        <td><%= ticket.title %></td>
-        <td><%= ticket.system.name %></td>
-        <td><%= ticket.status.name %></td>
-        <td><%= ticket.created_at %></td>
-        <td><%= link_to 'Show', ticket %></td>
-        <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-        <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 
 <br>
 

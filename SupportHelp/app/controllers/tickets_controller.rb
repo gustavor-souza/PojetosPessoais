@@ -29,6 +29,7 @@ class TicketsController < ApplicationController
   end
 
   def edit
+    @ticket = set_ticket
   end
 
   def create

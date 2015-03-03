@@ -50225,3 +50225,1114 @@ Completed 200 OK in 435ms (Views: 367.4ms | ActiveRecord: 18.0ms)
   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
   [1m[35mTicket Load (1.8ms)[0m  SELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1
   [1m[36m (0.8ms)[0m  [1mROLLBACK[0m
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-23 23:41:35 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (44.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+Completed 401 Unauthorized in 38ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-23 23:41:35 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (12.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (57.7ms)
+  Rendered layouts/_navbar.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 1079ms (Views: 795.1ms | ActiveRecord: 193.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-23 23:41:51 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oe6oQZ9Uk1M6nJHxZ/N1phgI4dur3wivKOmj22RrizRNoRfQqXOiXeaCgprDkdKLGIiZqDB+cU6ujlid+Ur3hg==", "user"=>{"email"=>"teste@teste.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (122.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "teste@teste.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4  [["current_sign_in_at", "2015-02-24 02:41:51.595544"], ["sign_in_count", 2], ["updated_at", "2015-02-24 02:41:51.597757"], ["id", 1]]
+  [1m[36m (21.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/tickets
+Completed 302 Found in 479ms (ActiveRecord: 145.1ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-23 23:41:51 -0300
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (23.3ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1[0m  [["client_id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0  [["client_id", 1]]
+  [1m[36mSystem Load (29.6ms)[0m  [1mSELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mStatus Load (12.1ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (149.9ms)
+  Rendered layouts/_navbar.html.erb (0.8ms)
+  Rendered layouts/_left_menu.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 352ms (Views: 272.9ms | ActiveRecord: 70.2ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-23 23:44:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1[0m  [["client_id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0  [["client_id", 1]]
+  [1m[36mSystem Load (0.5ms)[0m  [1mSELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mStatus Load (0.4ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (76.0ms)
+  Rendered layouts/_navbar.html.erb (2.2ms)
+  Rendered layouts/_left_menu.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 532ms (Views: 470.5ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-23 23:45:04 -0300
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.5ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mSystem Load (0.5ms)[0m  SELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_navbar.html.erb (0.9ms)
+  Rendered layouts/_left_menu.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 330ms (Views: 322.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-23 23:47:15 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1[0m  [["client_id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0  [["client_id", 1]]
+  [1m[36mSystem Load (0.4ms)[0m  [1mSELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mStatus Load (0.3ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (59.9ms)
+  Rendered layouts/_navbar.html.erb (1.8ms)
+  Rendered layouts/_left_menu.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 406ms (Views: 359.9ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-23 23:47:37 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.4ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered tickets/_form.html.erb (16.7ms)
+  Rendered tickets/edit.html.erb within layouts/application (18.4ms)
+Completed 500 Internal Server Error in 26ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_form.html.erb:21:in `block in _app_views_tickets__form_html_erb___2409556798938421240_70156418525820'
+  app/views/tickets/_form.html.erb:1:in `_app_views_tickets__form_html_erb___2409556798938421240_70156418525820'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__232647650881269592_70156417383300'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (12.6ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (40.1ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-23 23:47:37 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.4ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered tickets/_form.html.erb (6.2ms)
+  Rendered tickets/edit.html.erb within layouts/application (7.9ms)
+Completed 500 Internal Server Error in 15ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_form.html.erb:21:in `block in _app_views_tickets__form_html_erb___2409556798938421240_47100640'
+  app/views/tickets/_form.html.erb:1:in `_app_views_tickets__form_html_erb___2409556798938421240_47100640'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__232647650881269592_47199740'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (13.7ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (43.0ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-23 23:48:56 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1[0m  [["client_id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0  [["client_id", 1]]
+  [1m[36mSystem Load (0.4ms)[0m  [1mSELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mStatus Load (1.2ms)[0m  SELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (79.5ms)
+  Rendered layouts/_navbar.html.erb (2.3ms)
+  Rendered layouts/_left_menu.html.erb (2.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 537ms (Views: 474.2ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-23 23:58:58 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 72ms
+
+SyntaxError (/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/index.html.erb:15: syntax error, unexpected ')', expecting keyword_end
+    );@output_buffer.safe_append='    <div> ticket.title </div>
+     ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/index.html.erb:37: syntax error, unexpected keyword_end, expecting ')'
+  end );@output_buffer.safe_append='
+     ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/index.html.erb:45: syntax error, unexpected keyword_ensure, expecting ')'
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/index.html.erb:47: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/tickets/index.html.erb:15: syntax error, unexpected ')', expecting keyword_end
+  app/views/tickets/index.html.erb:37: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/index.html.erb:45: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/tickets/index.html.erb:47: syntax error, unexpected keyword_end, expecting ')'
+  app/controllers/tickets_controller.rb:10:in `index'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (12.4ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (12.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.4ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (49.3ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:01:25 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (111.2ms)
+Completed 500 Internal Server Error in 163ms
+
+ActionView::Template::Error (undefined local variable or method `ticket' for #<#<Class:0x007fad6c4e51a8>:0x007fad6c4f6a70>):
+    13:       link_to('abrir', edit_ticket_path(ticket))
+    14:     end
+    15: 
+    16:     print("<div>#{ticket.title}</div>")
+    17:   #  g.column name: 'Título' do |ticket|
+    18:   #    ticket.title
+    19:   #  end
+  app/views/tickets/index.html.erb:16:in `block in _app_views_tickets_index_html_erb___366201908630043228_70191411731000'
+  app/views/tickets/index.html.erb:8:in `_app_views_tickets_index_html_erb___366201908630043228_70191411731000'
+  app/controllers/tickets_controller.rb:10:in `index'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (7.6ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.8ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (26.3ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:09:16 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mSystem Load (0.4ms)[0m  SELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mStatus Load (0.4ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (84.3ms)
+  Rendered layouts/_navbar.html.erb (2.1ms)
+  Rendered layouts/_left_menu.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 526ms (Views: 475.9ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:10:09 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (156.4ms)
+Completed 500 Internal Server Error in 206ms
+
+ActionView::Template::Error (undefined local variable or method `task' for #<#<Class:0x007fa1d04e5880>:0x007fa1d04fb130>):
+    10:     g.blank_slate content_tag(:div, "Nenhum ticket deste usuário", class: 'well')
+    11: 
+    12:     g.after_row do |ticket, number_of_columns|
+    13:        if task.priority == Priority.urgent
+    14:          content_tag(:tr,
+    15:            content_tag(:td,
+    16:              content_tag(:button, "Panic! \"#{task.title}\" is urgent!", class: "btn btn-danger"),
+  app/views/tickets/index.html.erb:13:in `block (2 levels) in _app_views_tickets_index_html_erb__1602682441954408125_70166480805040'
+  app/views/tickets/index.html.erb:8:in `_app_views_tickets_index_html_erb__1602682441954408125_70166480805040'
+  app/controllers/tickets_controller.rb:10:in `index'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (7.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (26.9ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:10:38 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (148.1ms)
+Completed 500 Internal Server Error in 196ms
+
+ActionView::Template::Error (undefined local variable or method `task' for #<#<Class:0x007f88184ea668>:0x000000039602f0>):
+    12:     g.after_row do |ticket, number_of_columns|
+    13:          content_tag(:tr,
+    14:            content_tag(:td,
+    15:              content_tag(:button, "Panic! \"#{task.title}\" is urgent!", class: "btn btn-danger"),
+    16:            colspan: number_of_columns),
+    17:           class: 'extra-row')
+    18:      end
+  app/views/tickets/index.html.erb:15:in `block (2 levels) in _app_views_tickets_index_html_erb__3401692604171049741_29977680'
+  app/views/tickets/index.html.erb:8:in `_app_views_tickets_index_html_erb__3401692604171049741_29977680'
+  app/controllers/tickets_controller.rb:10:in `index'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (8.2ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.8ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (27.3ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:11:11 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mSystem Load (0.4ms)[0m  SELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mStatus Load (0.4ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (71.5ms)
+  Rendered layouts/_navbar.html.erb (1.6ms)
+  Rendered layouts/_left_menu.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 408ms (Views: 358.6ms | ActiveRecord: 12.2ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:13:01 -0300
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mSystem Load (0.4ms)[0m  SELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mStatus Load (0.5ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (12.6ms)
+  Rendered layouts/_navbar.html.erb (1.0ms)
+  Rendered layouts/_left_menu.html.erb (0.7ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 255ms (Views: 244.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:13:38 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mSystem Load (0.3ms)[0m  SELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (72.4ms)
+  Rendered layouts/_navbar.html.erb (1.7ms)
+  Rendered layouts/_left_menu.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 427ms (Views: 367.1ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:14:11 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mSystem Load (0.3ms)[0m  SELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mStatus Load (0.4ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (66.6ms)
+  Rendered layouts/_navbar.html.erb (2.5ms)
+  Rendered layouts/_left_menu.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 420ms (Views: 365.3ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:14:47 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  [1m[35mSystem Load (0.3ms)[0m  SELECT  "systems".* FROM "systems" WHERE "systems"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mStatus Load (0.3ms)[0m  [1mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (65.3ms)
+  Rendered layouts/_navbar.html.erb (1.5ms)
+  Rendered layouts/_left_menu.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 409ms (Views: 359.0ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 00:19:31 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (36.3ms)
+  Rendered layouts/_navbar.html.erb (1.3ms)
+  Rendered layouts/_left_menu.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 368ms (Views: 323.3ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 00:20:02 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/_form.html.erb (12.5ms)
+  Rendered tickets/edit.html.erb within layouts/application (14.3ms)
+Completed 500 Internal Server Error in 27ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_form.html.erb:21:in `block in _app_views_tickets__form_html_erb__231973686727681264_70057494189640'
+  app/views/tickets/_form.html.erb:1:in `_app_views_tickets__form_html_erb__231973686727681264_70057494189640'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__1953373591347255058_70057494257020'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (10.7ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (31.0ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 00:20:02 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (0.4ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/_form.html.erb (6.0ms)
+  Rendered tickets/edit.html.erb within layouts/application (7.5ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_form.html.erb:21:in `block in _app_views_tickets__form_html_erb__231973686727681264_14760640'
+  app/views/tickets/_form.html.erb:1:in `_app_views_tickets__form_html_erb__231973686727681264_14760640'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__1953373591347255058_7973220'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (8.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.2ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (27.9ms)
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:28:07 -0300
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.9ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (3.9ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.6ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (15.2ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+  Rendered layouts/_left_menu.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 206ms (Views: 197.8ms | ActiveRecord: 5.9ms)
+  [1m[36mTicket Load (2.0ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:38:05 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (39.6ms)
+  Rendered layouts/_navbar.html.erb (1.3ms)
+  Rendered layouts/_left_menu.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 375ms (Views: 326.0ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:38:11 -0300
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.6ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (19.4ms)
+  Rendered layouts/_navbar.html.erb (0.8ms)
+  Rendered layouts/_left_menu.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 272ms (Views: 267.5ms | ActiveRecord: 2.0ms)
+  [1m[36mTicket Load (0.9ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "1234567890123456789012345678901234567890"], ["updated_at", "2015-02-24 03:38:58.453838"], ["id", 1]]
+  [1m[35m (20.3ms)[0m  COMMIT
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:39:09 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (38.7ms)
+  Rendered layouts/_navbar.html.erb (1.6ms)
+  Rendered layouts/_left_menu.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 379ms (Views: 333.7ms | ActiveRecord: 6.0ms)
+  [1m[36mTicket Load (0.8ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "1234567890123456789012345678901234567890123456"], ["updated_at", "2015-02-24 03:40:25.271554"], ["id", 1]]
+  [1m[35m (18.7ms)[0m  COMMIT
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:40:34 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (41.4ms)
+  Rendered layouts/_navbar.html.erb (1.3ms)
+  Rendered layouts/_left_menu.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 377ms (Views: 332.4ms | ActiveRecord: 5.7ms)
+  [1m[36mTicket Load (0.9ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "12345678901234567890123456789012345678901234567890"], ["updated_at", "2015-02-24 03:41:45.274741"], ["id", 1]]
+  [1m[35m (16.2ms)[0m  COMMIT
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:42:06 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (48.9ms)
+  Rendered layouts/_navbar.html.erb (1.9ms)
+  Rendered layouts/_left_menu.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 495ms (Views: 436.2ms | ActiveRecord: 6.3ms)
+  [1m[36mTicket Load (1.1ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "12345678901234567890123456789012345678901234567890123456789012345678901111111111111112222222222222"], ["updated_at", "2015-02-24 03:44:22.779533"], ["id", 1]]
+  [1m[35m (15.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3  [["title", "12345678901234567890123456789012345678901234567890123456789012345678901111111111111112222222222222a"], ["updated_at", "2015-02-24 03:44:58.444311"], ["id", 1]]
+  [1m[36m (23.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "12345678901234567890123456789012345678901234567890123456789012345678901111111111111112222222222222ad"], ["updated_at", "2015-02-24 03:45:08.441989"], ["id", 1]]
+  [1m[35m (11.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3  [["title", "12345678901234567890123456789012345678901234567890123456789012345678901111111111111112222222222222a3"], ["updated_at", "2015-02-24 03:45:22.540595"], ["id", 1]]
+  [1m[36m (23.1ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:45:45 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (38.2ms)
+  Rendered layouts/_navbar.html.erb (2.3ms)
+  Rendered layouts/_left_menu.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 368ms (Views: 324.1ms | ActiveRecord: 6.1ms)
+  [1m[36mTicket Load (0.8ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "12345678901234567890123456789012345678901234567890123456789012345678901234567890"], ["updated_at", "2015-02-24 03:47:04.993439"], ["id", 1]]
+  [1m[35m (32.9ms)[0m  COMMIT
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:47:20 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (39.0ms)
+  Rendered layouts/_navbar.html.erb (1.3ms)
+  Rendered layouts/_left_menu.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 381ms (Views: 330.4ms | ActiveRecord: 7.4ms)
+  [1m[36mTicket Load (0.8ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "12345678901 23456789012 345678901234567890123 45678901234567890123456789012 34567890ddddddddddd"], ["updated_at", "2015-02-24 03:48:20.769460"], ["id", 1]]
+  [1m[35m (18.2ms)[0m  COMMIT
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:48:33 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (35.5ms)
+  Rendered layouts/_navbar.html.erb (1.5ms)
+  Rendered layouts/_left_menu.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 361ms (Views: 316.3ms | ActiveRecord: 5.6ms)
+  [1m[36mTicket Load (1.1ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 "], ["updated_at", "2015-02-24 03:49:48.124671"], ["id", 1]]
+  [1m[35m (53.3ms)[0m  COMMIT
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:49:56 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (36.8ms)
+  Rendered layouts/_navbar.html.erb (1.3ms)
+  Rendered layouts/_left_menu.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 370ms (Views: 323.9ms | ActiveRecord: 6.2ms)
+  [1m[36mTicket Load (1.0ms)[0m  [1mSELECT  "tickets".* FROM "tickets"  ORDER BY "tickets"."id" DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "tickets" SET "title" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["title", "123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789"], ["updated_at", "2015-02-24 03:51:13.222236"], ["id", 1]]
+  [1m[35m (23.2ms)[0m  COMMIT
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:51:35 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (40.0ms)
+  Rendered layouts/_navbar.html.erb (1.6ms)
+  Rendered layouts/_left_menu.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 426ms (Views: 373.4ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 00:53:24 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/_form.html.erb (12.6ms)
+  Rendered tickets/edit.html.erb within layouts/application (14.5ms)
+Completed 500 Internal Server Error in 22ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_form.html.erb:21:in `block in _app_views_tickets__form_html_erb__2793396221147645104_70335966624000'
+  app/views/tickets/_form.html.erb:1:in `_app_views_tickets__form_html_erb__2793396221147645104_70335966624000'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__2077470551408378238_70335967588200'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (7.8ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (27.4ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 00:53:25 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (0.4ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/_form.html.erb (5.4ms)
+  Rendered tickets/edit.html.erb within layouts/application (6.9ms)
+Completed 500 Internal Server Error in 14ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_form.html.erb:21:in `block in _app_views_tickets__form_html_erb__2793396221147645104_55243140'
+  app/views/tickets/_form.html.erb:1:in `_app_views_tickets__form_html_erb__2793396221147645104_55243140'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__2077470551408378238_55299960'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (12.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (4.5ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (41.2ms)
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 00:54:56 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (50.2ms)
+  Rendered layouts/_navbar.html.erb (1.4ms)
+  Rendered layouts/_left_menu.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 446ms (Views: 385.4ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-24 23:19:35 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (44.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (15.6ms)
+  Rendered layouts/_navbar.html.erb (4.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 650ms (Views: 626.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-24 23:19:39 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (10.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (126.6ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 481ms (Views: 336.0ms | ActiveRecord: 119.8ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-24 23:19:50 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GQgdniXz51VAX12iAW7qjJWQFzJJVgGyqTmFIxfR7uC8BbaLcqCAbC5zqnpdYuGakSNp0YnXoJHIWqNgpvzfqg==", "user"=>{"email"=>"teste@teste.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (118.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "teste@teste.com"]]
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5  [["last_sign_in_at", "2015-02-24 02:41:51.595544"], ["current_sign_in_at", "2015-02-25 02:19:50.526881"], ["sign_in_count", 3], ["updated_at", "2015-02-25 02:19:50.528937"], ["id", 1]]
+  [1m[36m (14.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/tickets
+Completed 302 Found in 382ms (ActiveRecord: 134.0ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 23:19:50 -0300
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (13.6ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.5ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (70.1ms)
+  Rendered layouts/_navbar.html.erb (0.8ms)
+  Rendered layouts/_left_menu.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 333ms (Views: 287.2ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:20:00 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (1.0ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/_form.html.erb (9.2ms)
+  Rendered tickets/edit.html.erb within layouts/application (11.0ms)
+Completed 500 Internal Server Error in 29ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_form.html.erb:21:in `block in _app_views_tickets__form_html_erb___4246357224798149035_69907344072780'
+  app/views/tickets/_form.html.erb:1:in `_app_views_tickets__form_html_erb___4246357224798149035_69907344072780'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__2845201294120307478_69907343642920'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (7.8ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (28.3ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:20:00 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (1.0ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered tickets/_form.html.erb (6.7ms)
+  Rendered tickets/edit.html.erb within layouts/application (8.6ms)
+Completed 500 Internal Server Error in 17ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_form.html.erb:21:in `block in _app_views_tickets__form_html_erb___4246357224798149035_47586480'
+  app/views/tickets/_form.html.erb:1:in `_app_views_tickets__form_html_erb___4246357224798149035_47586480'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__2845201294120307478_47637720'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (7.7ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (26.6ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2015-02-24 23:39:07 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#index as HTML
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count[0m  [["client_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1  [["client_id", 1]]
+  [1m[36mTicket Load (0.5ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0[0m  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (44.5ms)
+  Rendered layouts/_navbar.html.erb (1.6ms)
+  Rendered layouts/_left_menu.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 422ms (Views: 363.3ms | ActiveRecord: 12.9ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:39:10 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (0.6ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered tickets/_form.html.erb (2.7ms)
+  Rendered tickets/edit.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 13ms
+
+SyntaxError (/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_form.html.erb:15: syntax error, unexpected ':', expecting '}'
+...title, {class: 'form-control' :disabled} );@output_buffer.sa...
+...                               ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/tickets/_form.html.erb:15: syntax error, unexpected ':', expecting '}'
+  app/views/tickets/_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/tickets/_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb___740841451094896410_69833691580720'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (8.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.2ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (31.2ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:39:10 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.9ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered tickets/_form.html.erb (2.9ms)
+  Rendered tickets/edit.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 19ms
+
+SyntaxError (/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_form.html.erb:15: syntax error, unexpected ':', expecting '}'
+...title, {class: 'form-control' :disabled} );@output_buffer.sa...
+...                               ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/tickets/_form.html.erb:15: syntax error, unexpected ':', expecting '}'
+  app/views/tickets/_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/tickets/_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb___740841451094896410_47999080'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (8.4ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (27.8ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:40:38 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (0.9ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered tickets/_edit_form.html.erb (1.4ms)
+  Rendered tickets/edit.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 81ms
+
+SyntaxError (/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:15: syntax error, unexpected '}', expecting =>
+...ass: 'form-control', :disabled} );@output_buffer.safe_append...
+...                               ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/tickets/_edit_form.html.erb:15: syntax error, unexpected '}', expecting =>
+  app/views/tickets/_edit_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/_edit_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/tickets/_edit_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb___2399034913895324534_69835466713320'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (8.2ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (28.7ms)
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 23:40:43 -0300
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count  [["client_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1[0m  [["client_id", 1]]
+  [1m[35mTicket Load (0.3ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (30.8ms)
+  Rendered layouts/_navbar.html.erb (1.3ms)
+  Rendered layouts/_left_menu.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 304ms (Views: 298.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:40:46 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.5ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered tickets/_edit_form.html.erb (2.6ms)
+  Rendered tickets/edit.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 15ms
+
+SyntaxError (/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:15: syntax error, unexpected '}', expecting =>
+...ass: 'form-control', :disabled} );@output_buffer.safe_append...
+...                               ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/tickets/_edit_form.html.erb:15: syntax error, unexpected '}', expecting =>
+  app/views/tickets/_edit_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/_edit_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/tickets/_edit_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb___2399034913895324534_52385780'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (8.5ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (27.7ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:40:46 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (0.7ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered tickets/_edit_form.html.erb (1.9ms)
+  Rendered tickets/edit.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 10ms
+
+SyntaxError (/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:15: syntax error, unexpected '}', expecting =>
+...ass: 'form-control', :disabled} );@output_buffer.safe_append...
+...                               ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+             ^
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+/home/gustavo/Documents/Projects/SupportHelp/app/views/tickets/_edit_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'):
+  app/views/tickets/_edit_form.html.erb:15: syntax error, unexpected '}', expecting =>
+  app/views/tickets/_edit_form.html.erb:53: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/_edit_form.html.erb:55: syntax error, unexpected keyword_ensure, expecting ')'
+  app/views/tickets/_edit_form.html.erb:57: syntax error, unexpected keyword_end, expecting ')'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb___2399034913895324534_69835466713320'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (8.5ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/diagnostics.html.erb within rescues/layout (27.8ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:41:34 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (0.8ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered tickets/_edit_form.html.erb (23.6ms)
+  Rendered tickets/edit.html.erb within layouts/application (28.3ms)
+Completed 500 Internal Server Error in 105ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_edit_form.html.erb:21:in `block in _app_views_tickets__edit_form_html_erb___1759703594166851016_70147992756360'
+  app/views/tickets/_edit_form.html.erb:1:in `_app_views_tickets__edit_form_html_erb___1759703594166851016_70147992756360'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__2485435757318040050_70147992610160'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (8.3ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (27.1ms)
+
+
+Started GET "/tickets/" for 127.0.0.1 at 2015-02-24 23:41:38 -0300
+Processing by TicketsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0) subquery_for_count  [["client_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."client_id" = $1[0m  [["client_id", 1]]
+  [1m[35mTicket Load (0.4ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."client_id" = $1 LIMIT 20 OFFSET 0  [["client_id", 1]]
+  Rendered tickets/index.html.erb within layouts/application (18.0ms)
+  Rendered layouts/_navbar.html.erb (2.3ms)
+  Rendered layouts/_left_menu.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 318ms (Views: 312.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:41:41 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.4ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1[0m  [["id", "1"]]
+  Rendered tickets/_edit_form.html.erb (7.3ms)
+  Rendered tickets/edit.html.erb within layouts/application (10.3ms)
+Completed 500 Internal Server Error in 20ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_edit_form.html.erb:21:in `block in _app_views_tickets__edit_form_html_erb___1759703594166851016_37790600'
+  app/views/tickets/_edit_form.html.erb:1:in `_app_views_tickets__edit_form_html_erb___1759703594166851016_37790600'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__2485435757318040050_37714840'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (7.4ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (6.6ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (30.5ms)
+
+
+Started GET "/tickets/1/edit" for 127.0.0.1 at 2015-02-24 23:41:42 -0300
+Processing by TicketsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTicket Load (1.4ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT 1  [["id", "1"]]
+  Rendered tickets/_edit_form.html.erb (4.0ms)
+  Rendered tickets/edit.html.erb within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (undefined method `order' for nil:NilClass):
+    18:   <div class="form-group">
+    19:     <%= f.label :Sistema %><br>
+    20:     <%= f.collection_select :system_id,
+    21:       @system.order(:name),:id,:name, {include_blank: 'Selecione...'},
+    22:       {class: 'form-control', id: 'system_select'}%>
+    23:   </div>
+    24: 
+  app/views/tickets/_edit_form.html.erb:21:in `block in _app_views_tickets__edit_form_html_erb___1759703594166851016_70147992756360'
+  app/views/tickets/_edit_form.html.erb:1:in `_app_views_tickets__edit_form_html_erb___1759703594166851016_70147992756360'
+  app/views/tickets/edit.html.erb:3:in `_app_views_tickets_edit_html_erb__2485435757318040050_70147992610160'
+
+
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (7.8ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /home/gustavo/.rvm/gems/ruby-2.2.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (26.8ms)
