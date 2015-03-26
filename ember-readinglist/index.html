@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember readinglist</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script type="text/x-handlebars" data-template-name="application">
+    <div class="container">
+      <h1>Readinglist </h1>
+      {{outlet}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="index">
+    {{book-details book = this}}
+    <ul class="list-unstyled">
+    {{#each}}
+    <div class='col-sm-3'>
+      <a {{bind-attr href='url'}} target='_blank'>
+      <img {{bind-attr src='image'}} />
+      </a>
+      <p class='text-center rating'><strong>{{rating}}</strong>/5</p>
+      <div>
+        <h3>{{#link-to 'book' this}} {{title}} {{/link-to}} </h3>
+      </div>
+    </div>
+
+    {{/each}}
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="book">
+    {{book-details book = this}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="components/book-details">
+    <ol class='breadcrumb'>
+    <li>{{#link-to 'index'}}Books{{/link-to}}</li>
+    <li class='active'>{{book.title}}</li>
+    </ol>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/ember-template-compiler-1.10.0.js"></script>
+  <script src="js/libs/ember-1.10.0.debug.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
