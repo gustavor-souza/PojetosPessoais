@@ -7,6 +7,8 @@
 				%h1= @recipe.title
 				%p.description= @recipe.description
 				%p
+					submited by
+					= @recipe.user.email
 
 
 	.row
