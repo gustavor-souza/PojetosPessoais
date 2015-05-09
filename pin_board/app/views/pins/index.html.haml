@@ -1,3 +1,5 @@
 = link_to 'New pin', new_pin_path
+%br/
 - @pins.each do |pin|
   %h2= link_to pin.title, pin_path(pin)
+  = image_tag pin.image.url(:medium)
