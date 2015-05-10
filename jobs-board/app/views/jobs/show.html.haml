@@ -1,0 +1,7 @@
+%h1= @job.title
+%p= @job.description
+%p= @job.company
+
+= link_to "home", root_path
+= link_to "edit", edit_job_path
+= link_to "delete", @job, method: :delete, data: {confirm: "Are you sure?"}
