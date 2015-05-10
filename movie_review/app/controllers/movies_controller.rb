@@ -4,6 +4,15 @@ class MoviesController < ApplicationController
 
   # GET /movies
   # GET /movies.json
+
+  def search
+    if params[:search].present?
+      @movies = Movie.search(params[:search])
+    else
+      @movies = Movie.all
+    end
+  end
+
   def index
     @movies = Movie.all
   end
@@ -11,6 +20,12 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @reviews = Review.by_movie(@movie.id)
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end
   end
 
   # GET /movies/new
@@ -70,6 +85,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating,:image)
+      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating,:image,:search)
     end
 end
