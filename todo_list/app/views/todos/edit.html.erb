@@ -1,6 +1,9 @@
-<h1>Editing Todo</h1>
+<h1 class="todo_list_title">Edit Todo List</h1>
 
-<%= render 'form' %>
+<div class="forms">
+	<%= render 'form' %>
+</div>
 
-<%= link_to 'Show', @todo %> |
-<%= link_to 'Back', todos_path %>
+<div class="links">
+	<%= link_to 'Cancel', :back %>
+</div>
