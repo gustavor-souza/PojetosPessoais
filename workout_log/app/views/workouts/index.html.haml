@@ -1,1 +1,8 @@
-%h2 this is index placeholdr
+
+
+- @workouts.each do |w|
+  %h2= link_to w.date, w
+  %h3= w.workout
+
+  %p= w.date
+  %p= w.workout

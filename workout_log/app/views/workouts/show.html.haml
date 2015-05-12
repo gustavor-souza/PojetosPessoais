@@ -3,3 +3,7 @@
   %p= @workout.workout
   %p= @workout.mood
   %p= @workout.length
+
+  =link_to 'Back', :root
+  =link_to 'Edit', edit_workout_path
+  =link_to 'Delete', workout_path, method: :delete, data: {confirm: 'Are you sure?'}
