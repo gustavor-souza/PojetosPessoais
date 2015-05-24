@@ -61,6 +61,10 @@ GEM
       xpath (~> 2.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -145,8 +149,13 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
-    paranoid (0.0.7)
-      activerecord (>= 3.0.0.beta)
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+    paranoia (2.1.2)
+      activerecord (~> 4.0)
     pg (0.18.1)
     pr_geohash (1.0.0)
     pry (0.10.1)
@@ -278,7 +287,8 @@ DEPENDENCIES
   haml-rails (~> 0.9.0)
   jbuilder (~> 2.0)
   jquery-rails
-  paranoid
+  paperclip (~> 4.2)
+  paranoia
   pg
   rails (= 4.2.0)
   rolify (~> 4.0.0)
