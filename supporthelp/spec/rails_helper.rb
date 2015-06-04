@@ -9,9 +9,17 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
+  config.include Warden::Test::Helpers
+  
+  config.before :suite do
+    Warden.test_mode!
+  end
+
   config.use_transactional_fixtures = true
+  config.use_instantiated_fixtures  = false
+
 
   config.infer_spec_type_from_file_location!
-  
+
   config.include Capybara::DSL
 end
