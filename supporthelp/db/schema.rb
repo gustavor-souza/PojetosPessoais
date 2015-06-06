@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524195559) do
+ActiveRecord::Schema.define(version: 20150606175713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,11 @@ ActiveRecord::Schema.define(version: 20150524195559) do
     t.integer  "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -84,7 +86,7 @@ ActiveRecord::Schema.define(version: 20150524195559) do
     t.string   "encrypted_password",     default: "", null: false
     t.string   "name",                   default: "", null: false
     t.string   "ddd",                    default: "", null: false
-    t.string   "telefone",               default: "", null: false
+    t.string   "phone"
     t.integer  "company_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

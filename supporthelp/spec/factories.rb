@@ -7,6 +7,24 @@ FactoryGirl.define do
   factory :user do
     name "teste teste"
     email "testeemail@teste.com"
+    phone "99988877"
+    ddd "81"
+    password "12345678"
+  end
+
+  factory :invalid_user_phone, class: :user do
+    name "teste teste"
+    email "testeemail2@teste.com"
+    phone "9998887799999"
+    ddd "81"
+    password "12345678"
+  end
+
+  factory :invalid_user_ddd do
+    name "teste teste"
+    email "testeemail3@teste.com"
+    phone "99988877"
+    ddd "814"
     password "12345678"
   end
 
@@ -19,15 +37,7 @@ FactoryGirl.define do
       published false
     end
 
-    factory :article_with_comments do
-      ignore do
-        comments_count 3
-      end
 
-      after(:create) do |article, evaluator|
-        FactoryGirl.create_list(:comment, evaluator.comments_count, :article => article)
-      end
-    end
   end
 
   factory :ticket do
@@ -42,9 +52,27 @@ FactoryGirl.define do
   end
 
   factory :comment do
-    article
-    email
-    body { Forgery::LoremIpsum.sentence }
-    full_name "Commenter Bob"
+    content 'teste teste'
+  end
+
+  factory :category do
+    description 'teste teste'
+  end
+
+  factory :company do
+    name 'teste teste'
+    cnpj '60746948000112'
+  end
+
+  factory :priority do
+    description 'teste teste'
+  end
+
+  factory :status do
+    description 'teste teste'
+  end
+
+  factory :system do
+    description 'teste teste'
   end
 end

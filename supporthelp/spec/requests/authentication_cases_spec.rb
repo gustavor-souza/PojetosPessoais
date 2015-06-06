@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "AuthenticationCases", :type => :request do
+RSpec.describe "AuthenticationCases", type: :request do
 
     before do
       visit root_path
@@ -9,7 +9,7 @@ RSpec.describe "AuthenticationCases", :type => :request do
 
     context "failure" do
       before do
-        fill_in('user_email', :with => 'teste@teste.com')
+        fill_in('user_email', with: 'teste@teste.com')
         click_on('Log in')
       end
 
