@@ -1,3 +1,4 @@
+#classe de modelo do sistema de uma categoria
 class System < ActiveRecord::Base
   has_many :tickets
 

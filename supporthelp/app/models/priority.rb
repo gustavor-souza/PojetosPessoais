@@ -1,3 +1,4 @@
+#classe de modelo da prioridade de um ticket
 class Priority < ActiveRecord::Base
   has_many :tickets
 

@@ -1,3 +1,4 @@
+#classe de modelo dos tickets
 class Ticket < ActiveRecord::Base
   belongs_to :system
   belongs_to :category

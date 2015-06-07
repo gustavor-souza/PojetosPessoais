@@ -1,3 +1,4 @@
+#classe de modelo dos comentários dos tickets
 class Comment < ActiveRecord::Base
   belongs_to :ticket
 

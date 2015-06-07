@@ -1,3 +1,4 @@
+#classe de modelo da empresa a qual pertence o usuário
 class Company < ActiveRecord::Base
   has_many :users
 

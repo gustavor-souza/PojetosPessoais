@@ -1,3 +1,4 @@
+#classe de modelo do status de um ticket
 class Status < ActiveRecord::Base
   has_many :tickets
 
