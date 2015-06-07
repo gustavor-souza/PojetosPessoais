@@ -1,3 +1,15 @@
 = title "Tickets"
-%h1 Tickets#index
-%p Find me in app/views/tickets/index.html.haml
+.row
+  .col-md-3
+    = render 'side_menu'
+  .col-md-9
+    .row
+      .col-md-10.col-md-offset-1
+        .input-group
+          %input.form-control{:placeholder => "Search for...", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-default{:type => "button"} Go!
+    .row
+      .col-md-10.col-md-offset-1
+        %h1 Tickets#index
+        %p Find me in app/views/tickets/index.html.haml
