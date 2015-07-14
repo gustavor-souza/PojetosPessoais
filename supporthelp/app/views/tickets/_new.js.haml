@@ -1,0 +1,24 @@
+:javascript
+
+  $(document).ready( function(){
+    $('#ticket_category_id').prop('disabled', true);
+    $('#ticket_system_id').change(function(){
+      $.ajax({
+              url: '/tickets/fill_category_select/' + $('#ticket_system_id').val(), // Route to the Script Controller method
+             type: 'GET',
+         dataType: 'json',
+          success: function(data, textStatus, xhr) {
+                     $('#ticket_category_id').prop('disabled', false);
+                     $('#ticket_category_id')[0].options.length = 1;
+                     for(var i in data){
+                       var id = data[i].id;
+                       var title = data[i].description;
+                       $('#ticket_category_id').append(new Option(title, id));
+                     }
+                   },
+          error: function(XMLHttpRequest, errorTextStatus, error){
+                    alert('Failed: '+ errorTextStatus+' ;'+error);
+                 }
+        });
+      });
+    });

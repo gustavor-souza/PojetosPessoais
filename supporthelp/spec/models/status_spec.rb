@@ -16,7 +16,7 @@ RSpec.describe Status, :type => :model do
     end
 
     it 'maximum length' do
-      @status.description = 'a' * 16
+      @status.description = 'a' * 51
       expect(@status).not_to be_valid
     end
   end

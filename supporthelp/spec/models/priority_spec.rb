@@ -16,7 +16,7 @@ RSpec.describe Priority, :type => :model do
     end
 
     it 'maximum length' do
-      @priority.description = 'a' * 16
+      @priority.description = 'a' * 51
       expect(@priority).not_to be_valid
     end
   end

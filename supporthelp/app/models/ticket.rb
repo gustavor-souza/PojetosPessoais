@@ -10,6 +10,11 @@ class Ticket < ActiveRecord::Base
 
   has_many :comments
 
+  accepts_nested_attributes_for :system
+  accepts_nested_attributes_for :category
+  accepts_nested_attributes_for :status
+  accepts_nested_attributes_for :priority
+
   validates :title, presence: true, length: { minimum: 5, maximum: 50 }
   validates :description, presence: true, length: { minimum: 5, maximum: 600 }
 end

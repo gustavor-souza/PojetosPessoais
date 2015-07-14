@@ -1,0 +1,37 @@
+= simple_form_for(@ticket, html: { class: 'form-horizontal' }, remote: true) do |f|
+  - if @ticket.errors.any?
+    #errors
+      %p
+        = @ticket.errors.count
+        Prevented this recipe froms saving
+      %ul
+        - @ticket.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-field
+    = f.label 'Título'
+    = f.input :title, label: false, input_html: {class: 'form-control'},
+    placeholder: 'Título do ticket'
+  .form-field
+    = f.label 'Sistema'
+    = f.collection_select :system_id, System.all, :id, :description,
+    {:selected => @ticket.system_id, include_blank: 'Selecione...'}, class: 'form-control'
+  .form-field
+    = f.label 'Categoria'
+    = f.collection_select :category_id, Category.all, :id, :description,
+    { include_blank: 'Selecione...'}, class: 'form-control'
+  .form-field
+    = f.label 'Criticidade'
+    = f.collection_select :priority_id, Priority.all, :id, :description,
+    {:selected => @ticket.priority_id, include_blank: 'Selecione...'}, class: 'form-control'
+  .form-field
+    = f.label 'Status'
+    = f.collection_select :status_id, Status.all, :id, :description,
+    {:selected => @ticket.status_id, include_blank: 'Selecione...'}, class: 'form-control'
+  .form-field
+    = f.label 'Descrição do problema'
+    = f.input :description,
+    placeholder: 'texto com a descrição do problema ou dúvida...',
+    label: false, input_html: {class: 'form-control'}
+  %br
+  = f.button :submit, 'Criar Ticket', class: 'btn btn-primary'

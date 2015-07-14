@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'static_pages/about'
   get 'static_pages/contact'
 
-  resources :tickets, only: [:index,:show,:new, :create]
+  resources :tickets
+
+  match 'tickets/fill_category_select/:sent_id' => 'tickets#fill_category_select', via: :get
 
   devise_for :users
 
@@ -12,4 +14,5 @@ Rails.application.routes.draw do
 	end
 
   root 'static_pages#index'
+
 end
