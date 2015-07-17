@@ -1,8 +1,14 @@
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_ticket,  only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  respond_to :html
   def index
+    @search = Ticket.by_creator(current_user.id).search do
+      fulltext params[:search]
+      paginate(:page => params[:page], :per_page => 10)
+    end
+    @tickets = @search.results
   end
 
   def show
@@ -14,16 +20,17 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @ticket = Ticket.new
+    @ticket = current_user.creator.build
   end
 
   def create
     @ticket = current_user.creator.build(ticket_params)
-   if @ticket.save!
-     redirect_to @ticket, notice: "Ticket criado com sucesso"
-   else
-     render :root, notice: "deu erro porra"
-   end
+    if @ticket.save
+      flash[:success] = "Ticket criado com sucesso!"
+      respond_with(@ticket)
+    else
+      render new_ticket_path
+    end
   end
 
   private

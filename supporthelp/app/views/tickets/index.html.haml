@@ -5,11 +5,29 @@
   .col-md-9
     .row
       .col-md-10.col-md-offset-1
-        .input-group
-          %input.form-control{:placeholder => "Search for...", :type => "text"}/
-          %span.input-group-btn
-            %button.btn.btn-default{:type => "button"} Go!
+        = simple_form_for :search,  url: tickets_path , method: :get, html: { class: 'form-horizontal'  } do |f|
+          .col-md-10
+            = f.input :query, input_html: {value: '', class: 'form-control'}, label: false,
+            placeholder: 'Informe o texto de busca...'
+          = f.submit "Buscar", class: 'btn btn-default'
     .row
       .col-md-10.col-md-offset-1
-        %h1 Tickets#index
-        %p Find me in app/views/tickets/index.html.haml
+        .panel.panel-default
+          .panel-heading
+            Tickets
+          %table{id: 'tickets_list', class: 'table'}
+            %thead
+              %tr
+                %td Título:
+                %td Status:
+                %td Criado em:
+                %td Prazo:
+            %tbody
+              - @tickets.each do |ticket|
+                %tr
+                  %td= link_to 'abrir', ticket, class: 'label label-default'
+                  %td= ticket.title
+                  %td= ticket.status.description
+                  %td= ticket.created_at.strftime("%d/%m/%Y - %H:%M")
+                  %td= dead_line(ticket.created_at)
+          = will_paginate @tickets, renderer: BootstrapPagination::Rails

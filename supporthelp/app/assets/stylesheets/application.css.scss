@@ -54,3 +54,19 @@
  	font-weight: 300;
  	color: #1D976C !important;
  }
+
+ .error{
+   color: red
+ }
+
+ #error_explanation {
+   width: 600px;
+   border: 1px solid #DB6161;
+   padding: 7px;
+   padding-bottom: 0;
+   margin-bottom: 20px;
+   ul li {
+     font-size: 12px;
+     list-style: square;
+   }
+ }

@@ -1,9 +1,7 @@
-= simple_form_for(@ticket, html: { class: 'form-horizontal' }, remote: true) do |f|
+= simple_form_for(@ticket, html: { multipart: true  }) do |f|
   - if @ticket.errors.any?
-    #errors
-      %p
-        = @ticket.errors.count
-        Prevented this recipe froms saving
+    #error_explanation
+      Para criar um novo ticket é necessário resolver os problemas abaixo:
       %ul
         - @ticket.errors.full_messages.each do |msg|
           %li= msg
@@ -34,4 +32,4 @@
     placeholder: 'texto com a descrição do problema ou dúvida...',
     label: false, input_html: {class: 'form-control'}
   %br
-  = f.button :submit, 'Criar Ticket', class: 'btn btn-primary'
+  = f.submit 'Criar Ticket', class: 'btn btn-primary'
