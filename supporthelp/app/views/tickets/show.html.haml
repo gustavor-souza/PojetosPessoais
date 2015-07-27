@@ -1,4 +1,45 @@
-= title 'Seu Ticket'
-%h1 Tickets#show
-= @ticket.description
-%p Find me in app/views/tickets/show.html.haml
+= title 'Seu ticket'
+.row
+  .col-md-10.col-md-offset-1
+    .panel.panel-default
+      .panel-heading
+        %h4
+          Ticket:
+          = @ticket.title
+      %table{id: 'tickets_list', class: 'table'}
+        %thead
+          %tr
+            %td ID:
+            %td Criado em:
+            %td Status:
+            %td systema:
+            %td Prazo:
+        %tbody
+          %tr
+            %td= @ticket.id
+            %td= @ticket.created_at.strftime("%d/%m/%Y - %H:%M")
+            %td= @ticket.status.description
+            %td= @ticket.system.description
+            %td= dead_line(@ticket.created_at)
+
+.container
+  .page-header
+    = image_tag current_user.avatar.url(:medium)
+    %h1#timeline Timeline
+  %ul.timeline
+    %li
+      .timeline-badge
+        %i.glyphicon.glyphicon-check
+      .timeline-panel
+        .timeline-heading
+          %h4.timeline-title Descrição do problema
+          %p
+            %small.text-muted
+              %i.glyphicon.glyphicon-time
+              = @ticket.created_at.strftime("%d/%m/%Y - %H:%M")
+        .timeline-body
+          %p= @ticket.description
+
+    = render @ticket.comments
+
+    = render "comments/form"

@@ -1,0 +1,28 @@
+-if comment.user == @ticket.creator
+  %li
+    .timeline-badge.warning
+      %i.glyphicon.glyphicon-credit-card
+    .timeline-panel
+      .timeline-heading
+        /%h4.timeline-title Mussum ipsum cacilds
+      %p
+        %small.text-muted
+          %i.glyphicon.glyphicon-time
+          = @ticket.created_at.strftime("%d/%m/%Y - %H:%M")
+      .timeline-body
+      %p= comment.content
+-else
+  %li.timeline-inverted
+    .timeline-badge.warning
+      %i.glyphicon.glyphicon-credit-card
+    .timeline-panel
+      .timeline-heading
+        %h4.timeline-title
+          Comentário de
+          = current_user.name
+      %p
+        %small.text-muted
+          %i.glyphicon.glyphicon-time
+          = @ticket.created_at.strftime("%d/%m/%Y - %H:%M")
+      .timeline-body
+      %p= comment.content

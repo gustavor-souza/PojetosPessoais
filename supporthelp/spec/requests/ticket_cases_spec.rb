@@ -9,13 +9,12 @@ RSpec.describe "TicketCases", :type => :request do
       fill_in('user_email', with: @user.email)
       fill_in('user_password', with: @user.password)
       click_on('Log in')
-      load "#{Rails.root}/db/seeds.rb"
-      visit new_ticket_path
     end
 
-  context "sucess" do
-
-    it 'creates a ticket' do
+  context "creates" do
+    it 'new ticket' do
+      load "#{Rails.root}/db/seeds.rb"
+      visit new_ticket_path
       fill_in(:ticket_title,       with: 'Teste teste')
       #Valores dos selects acordo com o seeds.rb
       select('Sistema 2',                                    from: :ticket_system_id)

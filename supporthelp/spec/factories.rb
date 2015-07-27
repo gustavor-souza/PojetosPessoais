@@ -51,6 +51,39 @@ FactoryGirl.define do
     incharge_id nil
   end
 
+  factory :ticket_search_pass1, class: :ticket do
+    title  "teste passou"
+    description "description"
+    system_id nil
+    category_id nil
+    status_id nil
+    priority_id nil
+    creator_id nil
+    incharge_id nil
+  end
+
+  factory :ticket_search_pass2, class: :ticket do
+    title  "teste title"
+    description "passou description"
+    system_id nil
+    category_id nil
+    status_id nil
+    priority_id nil
+    creator_id nil
+    incharge_id nil
+  end
+
+  factory :ticket_search_not_pass, class: :ticket do
+    title  "ticket title"
+    description "description"
+    system_id nil
+    category_id nil
+    status_id nil
+    priority_id nil
+    creator_id nil
+    incharge_id nil
+  end
+
   factory :comment do
     content 'teste teste'
   end

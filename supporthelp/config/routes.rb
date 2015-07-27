@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'static_pages/about'
   get 'static_pages/contact'
 
-  resources :tickets
+  resources :tickets do
+  	resources :comments, only:[:create]
+  end
 
   match 'tickets/fill_category_select/:sent_id' => 'tickets#fill_category_select', via: :get
 

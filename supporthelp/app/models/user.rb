@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_many :incharge,  class_name: :Ticket, foreign_key: :incharge_id
   has_many :creator,   class_name: :Ticket, foreign_key: :creator_id
+  has_many :comments
 
   validates :ddd, presence: true, length: { is: 2 }
   validates :phone, presence: true, length: { minimum: 8, maximum: 9 }

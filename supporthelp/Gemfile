@@ -25,6 +25,7 @@ gem 'dotiw', github: 'radar/dotiw'
 gem 'will_paginate-bootstrap'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem "sunspot_test"
 
 group :development, :test do
   gem 'byebug'
