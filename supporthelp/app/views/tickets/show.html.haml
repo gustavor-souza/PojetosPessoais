@@ -6,26 +6,30 @@
         %h4
           Ticket:
           = @ticket.title
-      %table{id: 'tickets_list', class: 'table'}
-        %thead
-          %tr
-            %td ID:
-            %td Criado em:
-            %td Status:
-            %td systema:
-            %td Prazo:
-        %tbody
-          %tr
-            %td= @ticket.id
-            %td= @ticket.created_at.strftime("%d/%m/%Y - %H:%M")
-            %td= @ticket.status.description
-            %td= @ticket.system.description
-            %td= dead_line(@ticket.created_at)
+        = simple_form_for(@ticket, url: get_in_charge_path(@ticket.id)) do |f|
+          = f.submit 'Encerrar', {class: 'btn btn-warning btn-xs'}
+          = f.submit 'cancelar', {class: 'btn btn-warning btn-xs'}
+      = render 'show_form'
 
 .container
+  .row
+    .col-md-2
+    .col-md-3
+      = image_tag @ticket.creator.avatar.url, class: 'img-circle', size: '100x100'
+      %strong= @ticket.creator.name
+    .col-md-2
+    .col-md-4.col-md-offset-1
+      - if @ticket.incharge
+        = image_tag @ticket.incharge.avatar.url, class: 'img-circle', size: '100x100'
+        %strong= @ticket.incharge.name
+      -else
+        = image_tag "def_avatar.jpg", class: 'img-circle', size: '100x100'
+        %strong Aguardando atendente
+        .row
+          .col-md-offset-1
+            = simple_form_for(@ticket, url: get_in_charge_path(@ticket.id)) do |f|
+              = f.submit 'atender', class: 'btn btn-success btn-xs'
   .page-header
-    = image_tag current_user.avatar.url(:medium)
-    %h1#timeline Timeline
   %ul.timeline
     %li
       .timeline-badge

@@ -18,5 +18,7 @@ class Ticket < ActiveRecord::Base
   searchable do
     text :title, boost: 2
     text :description
+    integer :creator_id
+    integer :incharge_id
   end
 end

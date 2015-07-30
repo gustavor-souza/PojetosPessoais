@@ -1,0 +1,5 @@
+= simple_form_for([@ticket, @ticket.comments.build]) do |f|
+  = f.input :content, label: false ,input_html: {rows: 4, cols: 34, class: 'form-control'}
+  %br/
+  .col-md-offset-3
+    = f.submit 'Adicionar Comentário', class: 'btn btn-primary'

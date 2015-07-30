@@ -317,7 +317,7 @@ DEPENDENCIES
   better_errors
   bootstrap-sass (~> 3.3.4.1)
   byebug
-  cancancan (~> 1.10.1)
+  cancancan (~> 1.10)
   capybara (~> 2.4.4)
   coffee-rails (~> 4.1.0)
   devise (~> 3.5.0)
