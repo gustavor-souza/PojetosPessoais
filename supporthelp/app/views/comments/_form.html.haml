@@ -1,6 +1,7 @@
-- if current_user == @ticket.creator
-  .col-md-5
-    = render 'comments/partial_form_comments'
-- elsif current_user == @ticket.incharge
-  .col-md-5.col-md-offset-7
-    = render 'comments/partial_form_comments'
+- unless @ticket.canceled_or_finished?
+  - if current_user == @ticket.creator
+    .col-md-5
+      = render 'comments/partial_form_comments'
+  - elsif current_user == @ticket.incharge
+    .col-md-5.col-md-offset-7
+      = render 'comments/partial_form_comments'

@@ -37,8 +37,8 @@ Priority.create({description: "Sem impacto em produção"})
 
 # popula a tabela statuses -----------------------------------------------------
 
-Status.create({description: "Aberto"})
-Status.create({description: "Em análise"})
-Status.create({description: "Aguardando resposta do usuário"})
-Status.create({description: "Cancelado"})
-Status.create({description: "Encerrado"})
+Status.create({description: "Aberto", is_open: true})
+Status.create({description: "Em análise", is_waiting: true})
+Status.create({description: "Aguardando resposta do usuário", is_waiting_for_user: true})
+Status.create({description: "Cancelado", is_canceled: true})
+Status.create({description: "Encerrado", is_finished: true})

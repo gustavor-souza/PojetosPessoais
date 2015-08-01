@@ -6,9 +6,14 @@
         %h4
           Ticket:
           = @ticket.title
-        = simple_form_for(@ticket, url: get_in_charge_path(@ticket.id)) do |f|
-          = f.submit 'Encerrar', {class: 'btn btn-warning btn-xs'}
-          = f.submit 'cancelar', {class: 'btn btn-warning btn-xs'}
+        - if @ticket.finished?
+          = simple_form_for(@ticket, url: ticket_reopen_path(@ticket.id)) do |f|
+            = f.submit 'Reabrir', {class: 'btn btn-info btn-xs'}
+        - else
+          = simple_form_for(@ticket, url: cancel_or_finish_path(@ticket.id)) do |f|
+            - if current_user == @ticket.incharge
+              = f.submit 'Encerrar', {class: 'btn btn-warning btn-xs'}
+            = f.submit 'Cancelar', {class: 'btn btn-warning btn-xs'}
       = render 'show_form'
 
 .container

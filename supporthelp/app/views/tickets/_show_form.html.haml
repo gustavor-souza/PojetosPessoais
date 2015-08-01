@@ -18,7 +18,7 @@
         = simple_form_for(@ticket, url: update_category_path(@ticket.id)) do |f|
           = f.label 'Categoria:'
 
-          - if can? :attend, :ticket
+          - if can?(:attend, :ticket) && !@ticket.canceled_or_finished?
             = f.collection_select :category_id, Category.by_system(@ticket.system_id),
              :id, :description,
             { include_blank: false}, {class: 'form-control'}
@@ -30,7 +30,7 @@
       %td{colspan: 5}
         = simple_form_for(@ticket, url: {action: 'update_priority'}) do |f|
           = f.label 'Criticidade'
-          - if can? :attend, :ticket
+          - if can?(:attend, :ticket) && !@ticket.canceled_or_finished?
             = f.collection_select :priority_id, Priority.all, :id, :description,
             {include_blank: false}, class: 'form-control'
             = f.submit 'alterar', class: 'label-error' if can? :attend, :ticket

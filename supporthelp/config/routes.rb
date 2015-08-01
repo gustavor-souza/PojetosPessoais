@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   	resources :comments, only:[:create]
   end
 
-  patch   'tickets/get_in_charge/:id' => 'tickets#get_in_charge',     as: 'get_in_charge'
-  patch   'tickets/update_category/:id' => 'tickets#update_category', as: 'update_category'
-  patch   'tickets/update_priority/:id' => 'tickets#update_priority', as: 'update_priority'
+  patch   'tickets/reopen/:id' => 'tickets#ticket_reopen', as: 'ticket_reopen'
+  patch   'tickets/cancel_or_finish/:id' => 'tickets#cancel_or_finish', as: 'cancel_or_finish'
+  patch   'tickets/get_in_charge/:id' => 'tickets#get_in_charge',       as: 'get_in_charge'
+  patch   'tickets/update_category/:id' => 'tickets#update_category',   as: 'update_category'
+  patch   'tickets/update_priority/:id' => 'tickets#update_priority',   as: 'update_priority'
 
   match 'tickets/fill_category_select/:sent_id' => 'tickets#fill_category_select', via: :get
 

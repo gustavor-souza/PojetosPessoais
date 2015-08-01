@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :phone, presence: true, length: { minimum: 8, maximum: 9 }
   validates :name, presence: true, length: { minimum: 5, maximum: 100 }
 
-  def is_attendant?
+  def attendant?
     is_attendant
   end
 end

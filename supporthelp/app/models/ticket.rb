@@ -21,4 +21,35 @@ class Ticket < ActiveRecord::Base
     integer :creator_id
     integer :incharge_id
   end
+
+  def cancel_or_finish(commit)
+    cancel = false
+    finish = false
+
+    if commit == 'Cancelar'
+      cancel = true
+    elsif commit == 'Encerrar'
+      finish = true
+    end
+    #define o status e a menságem ao usuário
+    #select + pluck melhora a performance da consulta
+    self.status_id = Status.select(:id).where(is_finished: finish,
+     is_canceled: cancel).pluck(:id).first
+  end
+
+  def define_waiting_status
+    self.status_id = Status.select(:id).where(is_waiting: true).pluck(:id).first
+  end
+
+  def canceled_or_finished?
+    self.status.is_canceled || self.status.is_finished
+  end
+
+  def finished?
+    self.status.is_finished
+  end
+
+  def canceled?
+    self.status.is_canceled
+  end
 end
