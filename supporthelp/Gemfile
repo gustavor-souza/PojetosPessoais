@@ -14,7 +14,6 @@ gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'devise', '~> 3.5.0'
 gem 'rolify', '~> 4.0.0'
 gem 'cancancan', '~> 1.10'
-gem 'paranoia'
 gem 'simple_form', '~> 3.1.0'
 gem 'pg'
 gem "paperclip", '~> 4.2'
@@ -39,6 +38,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'mailcatcher'
   gem 'better_errors'
 end
 

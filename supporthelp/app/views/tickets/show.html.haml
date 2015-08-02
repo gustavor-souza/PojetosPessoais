@@ -32,9 +32,9 @@
         %strong Aguardando atendente
         .row
           .col-md-offset-1
-          - if can? :attend, :tickets
-            = simple_form_for(@ticket, url: get_in_charge_path(@ticket.id)) do |f|
-              = f.submit 'atender', class: 'btn btn-success btn-xs'
+            - if can? :attend, :tickets
+              = simple_form_for(@ticket, url: get_in_charge_path(@ticket.id)) do |f|
+                = f.submit 'atender', class: 'btn btn-success btn-xs'
   .page-header
   %ul.timeline
     %li

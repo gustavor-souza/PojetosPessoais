@@ -64,6 +64,9 @@ class TicketsController < ApplicationController
     @ticket.create_automatic_comment(msg, current_user.id)
     @ticket.save
     flash[:alert] = "Ticket #{@ticket.status.description}"
+
+    TicketMailer.ticket_finished_email(@ticket).deliver_now if @ticket.finished?
+    
     redirect_to @ticket
   end
 

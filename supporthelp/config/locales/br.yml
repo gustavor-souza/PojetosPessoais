@@ -24,3 +24,15 @@ br:
         one: 1 ano
         other: "%{count} anos"
       less_than_x: "menos de %{distance}"
+
+  ticket_mailer:
+    ticket_finished_email:
+      subject: 'Ticket %{ticket_id} encerrado'
+      title: 'Aviso de encerramento'
+      body: |
+        O ticket de título: "%{ticket_name}".
+        Foi finalizado por %{ticket_incharge} as %{ticket_finished_at}
+
+      confirm_link_html: 'Para ver a resolução proposta, acesse o
+      link: %{link}'
+      thanks_html: 'Obrigado pela preferencia'

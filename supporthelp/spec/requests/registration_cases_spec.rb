@@ -19,7 +19,7 @@ RSpec.describe "RegistrationCases", type: :request do
     before { click_on('Cadastrar') }
 
     it "email has been taken" do
-      expect(page).to have_content('has already been taken')
+      expect(page).to have_content('já está em uso')
     end
 
     it "shows the correct navigation links" do

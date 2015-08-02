@@ -1,6 +1,10 @@
 %header.navbar
   .container
-
+    %ul.nav.navbar-nav.navbar-left
+      %li
+        %a{:href => tickets_path}
+          Support Help
+          %i.glyphicon.glyphicon-comment
     %ul.nav.navbar-nav.navbar-right
       %li= link_to "Home",    :root
       %li= link_to "Sobre Nós",   static_pages_about_path
