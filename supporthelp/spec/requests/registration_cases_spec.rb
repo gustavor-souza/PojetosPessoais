@@ -16,7 +16,7 @@ RSpec.describe "RegistrationCases", type: :request do
 
   context "failure" do
 
-    before { click_on('Sign up') }
+    before { click_on('Cadastrar') }
 
     it "email has been taken" do
       expect(page).to have_content('has already been taken')
@@ -28,10 +28,10 @@ RSpec.describe "RegistrationCases", type: :request do
   end
 
   context "success" do
-    
+
     before do
       fill_in('user_email', with: 'valid_email@teste.com')
-      click_on('Sign up')
+      click_on('Cadastrar')
     end
 
     it "displays a welcome message" do

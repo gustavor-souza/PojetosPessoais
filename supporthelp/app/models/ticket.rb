@@ -10,7 +10,7 @@ class Ticket < ActiveRecord::Base
 
   has_many :comments
 
-  scope :by_creator, ->(creator_id) { where(creator_id: creator_id) }
+  scope :by_status, ->(status_id) { where(status_id: status_id) }
 
   validates :title, presence: true, length: { minimum: 5, maximum: 50 }
   validates :description, presence: true, length: { minimum: 5, maximum: 600 }
@@ -20,6 +20,7 @@ class Ticket < ActiveRecord::Base
     text :description
     integer :creator_id
     integer :incharge_id
+    integer :status_id
   end
 
   def cancel_or_finish(commit)
@@ -37,10 +38,6 @@ class Ticket < ActiveRecord::Base
      is_canceled: cancel).pluck(:id).first
   end
 
-  def define_waiting_status
-    self.status_id = Status.select(:id).where(is_waiting: true).pluck(:id).first
-  end
-
   def canceled_or_finished?
     self.status.is_canceled || self.status.is_finished
   end
@@ -51,5 +48,17 @@ class Ticket < ActiveRecord::Base
 
   def canceled?
     self.status.is_canceled
+  end
+
+  def define_open_status
+    self.status = Status.open
+  end
+
+  def define_waiting_status
+    self.status = Status.waiting
+  end
+
+  def create_automatic_comment(message, user_id)
+    self.comments.build(content: message, user_id: user_id, is_automatic: true )
   end
 end

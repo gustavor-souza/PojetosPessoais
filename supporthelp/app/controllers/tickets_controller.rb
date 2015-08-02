@@ -8,7 +8,7 @@ class TicketsController < ApplicationController
   respond_to :html
 
   def index
-    @search = do_search
+    @search = do_search(params[:status_id])
     @tickets = @search.results
   end
 
@@ -21,6 +21,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = current_user.creator.build(ticket_params)
+    @ticket.define_open_status
     if @ticket.save
       flash[:success] = 'Ticket criado com sucesso!'
       redirect_to @ticket
@@ -60,7 +61,7 @@ class TicketsController < ApplicationController
     @ticket.cancel_or_finish(params[:commit])
     #cria um comentário descrevendo a ação
     msg = "Ticket #{@ticket.status.description} por: #{current_user.name}"
-    @ticket.create_automatic_comment(msg)
+    @ticket.create_automatic_comment(msg, current_user.id)
     @ticket.save
     flash[:alert] = "Ticket #{@ticket.status.description}"
     redirect_to @ticket
@@ -68,7 +69,8 @@ class TicketsController < ApplicationController
 
   def ticket_reopen
     @ticket.define_waiting_status
-    @ticket.create_automatic_comment("Ticket reaberto por: #{current_user.name}")
+    @ticket.create_automatic_comment("Ticket reaberto por: #{current_user.name}",
+     current_user.id)
     @ticket.save
     flash[:success] = 'Ticket reaberto com sucesso!'
     redirect_to @ticket
@@ -79,9 +81,8 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
   end
 
-  def do_search
+  def do_search(status_id)
     Ticket.search do
-      fulltext params[:search]
       if current_user.attendant?
         any_of do
           with(:incharge_id, current_user.id)
@@ -90,6 +91,8 @@ class TicketsController < ApplicationController
       else
         with(:creator_id, current_user.id)
       end
+      fulltext params[:search]
+      with(:status_id, status_id) if status_id
       paginate(page: params[:page], per_page: 10)
     end
   end

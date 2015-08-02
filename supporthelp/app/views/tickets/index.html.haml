@@ -8,22 +8,25 @@
         = render 'search_form'
     .row
       .col-md-10.col-md-offset-1
-        .panel.panel-default
-          .panel-heading
-            Tickets
-          %table{id: 'tickets_list', class: 'table'}
-            %thead
-              %tr
-                %td Título:
-                %td Status:
-                %td Criado em:
-                %td Prazo:
-            %tbody
-              - @tickets.each do |ticket|
+        #ticket-panel
+          #ticket-panel-content.panel.panel-default
+            .panel-heading
+              Tickets
+            %table{id: 'tickets_list', class: 'table'}
+              %thead
                 %tr
-                  %td= link_to 'abrir', ticket, class: 'label label-default'
-                  %td= ticket.title
-                  %td= ticket.status.description
-                  %td= ticket.created_at.strftime("%d/%m/%Y - %H:%M")
-                  %td= dead_line(ticket.created_at)
-          = will_paginate @tickets, renderer: BootstrapPagination::Rails
+                  %td Título:
+                  %td Status:
+                  %td Criado em:
+                  %td Prazo:
+              %tbody
+                - @tickets.each do |ticket|
+                  %tr
+                    %td= link_to 'abrir', ticket, class: 'label label-default'
+                    %td= ticket.title
+                    %td= ticket.status.description
+                    %td= ticket.created_at.strftime("%d/%m/%Y - %H:%M")
+                    %td= dead_line(ticket.created_at)
+            = will_paginate @tickets, renderer: BootstrapPagination::Rails
+
+= render 'index.js.haml'

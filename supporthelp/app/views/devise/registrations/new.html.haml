@@ -1,0 +1,14 @@
+%h2 Sign up
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = f.error_notification
+  .loginmodal-container
+    = f.input :name, label: 'nome', required: true, autofocus: true, type: 'text'
+    = f.input :ddd, required: true, autofocus: true
+    = f.input :phone, label: :Telefone, required: true, autofocus: true
+    = f.input :email, required: true
+    = f.input :password, required: true if @minimum_password_length
+    = f.input :password_confirmation, required: true
+    = f.input :avatar, as: :file
+    %br/
+    = f.button :submit, "Cadastrar", class: 'loginmodal-submit'
+= render "devise/shared/links"

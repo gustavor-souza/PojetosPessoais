@@ -1,6 +1,6 @@
 -if comment.user == @ticket.creator
   %li
-    .timeline-badge.warning
+    .timeline-badge.info
       %i.glyphicon.glyphicon-credit-card
     .timeline-panel
       .timeline-heading
@@ -13,13 +13,20 @@
       %p= comment.content
 -else
   %li.timeline-inverted
-    .timeline-badge.warning
-      %i.glyphicon.glyphicon-credit-card
+    - if comment.automatic?
+      .timeline-badge.warning
+        %i.glyphicon.glyphicon-credit-card
+    - else
+      .timeline-badge.info
+        %i.glyphicon.glyphicon-credit-card
     .timeline-panel
       .timeline-heading
         %h4.timeline-title
-          Comentário de
-          = comment.user.name
+          - if comment.automatic?
+            MENSAGEM AUTOMÁTICA DO SISTEMA
+          - else
+            Comentário de
+            = comment.user.name
       %p
         %small.text-muted
           %i.glyphicon.glyphicon-time

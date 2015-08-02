@@ -1,19 +1,15 @@
 / left
 %h3
   %i.glyphicon.glyphicon-briefcase
-  Toolbox
+  Opções de filtro
 %hr/
 %ul.nav.nav-stacked
   %li
-    %a{:href => "javascript:;"}
-      %i.glyphicon.glyphicon-time
-      Recentes
-  %li
-    %a{:href => "javascript:;"}
-      %i.glyphicon.glyphicon-alert
-      Pendentes
-  %li
-    %a{:href => "javascript:;"}
-      %i.glyphicon.glyphicon-lock
-      Encerrados
+    = simple_form_for(:ticket, url: tickets_path(:status_id), html: { multipart: true  }) do |f|
+      = f.collection_select :status_id, Status.all, :id, :description,
+      {include_blank: 'Selecione um status...'}, class: 'form-control'
   %hr/
+  %li
+    %a{:href => tickets_path}
+      %i.glyphicon.glyphicon-time
+      Todos

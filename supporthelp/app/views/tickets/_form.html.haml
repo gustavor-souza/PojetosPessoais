@@ -23,10 +23,6 @@
     = f.collection_select :priority_id, Priority.all, :id, :description,
     {:selected => @ticket.priority_id, include_blank: 'Selecione...'}, class: 'form-control'
   .form-field
-    = f.label 'Status'
-    = f.collection_select :status_id, Status.all, :id, :description,
-    {:selected => @ticket.status_id, include_blank: 'Selecione...'}, class: 'form-control'
-  .form-field
     = f.label 'Descrição do problema'
     = f.input :description,
     placeholder: 'texto com a descrição do problema ou dúvida...',

@@ -8,7 +8,7 @@ RSpec.describe "TicketCases", :type => :request do
       @user = FactoryGirl.create(:user)
       fill_in('user_email', with: @user.email)
       fill_in('user_password', with: @user.password)
-      click_on('Log in')
+      click_on('Entrar')
     end
 
   context "creates" do
@@ -20,7 +20,6 @@ RSpec.describe "TicketCases", :type => :request do
       select('Sistema 2',                                    from: :ticket_system_id)
       select('Solicitar Criação de usuário',                 from: :ticket_category_id)
       select('Impacto nas atividades sem saida de contorno', from: :ticket_priority_id)
-      select('Aberto',                                       from: :ticket_status_id)
       fill_in(:ticket_description, with: 'Teste teste')
       click_button('Criar Ticket')
       expect(page).to have_content('Ticket criado com sucesso')

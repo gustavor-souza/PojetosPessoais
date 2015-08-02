@@ -1,0 +1,15 @@
+:javascript
+
+  $(document).ready( function(){
+    $('#ticket_status_id').change(function(){
+      $.ajax({
+              url: '?status_id=' + $('#ticket_status_id').val(), // Route to the Script Controller method
+             type: 'GET',
+         dataType: 'html',
+          success:  function(data){
+            $("#ticket-panel-content").remove()
+            $('#ticket-panel-content',data).appendTo('#ticket-panel')
+           }
+        });
+      });
+    });
