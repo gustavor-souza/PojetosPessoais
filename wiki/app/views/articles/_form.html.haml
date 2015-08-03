@@ -1,5 +1,0 @@
-= simple_form_for(@article, html: {class: 'form-horizontal'}) do |f|
-  = f.input :title
-  = f.collection_select :category_id,Category.all, :id, :name, {prompt: 'Select ...'}
-  = f.input :content
-  = f.button :submit

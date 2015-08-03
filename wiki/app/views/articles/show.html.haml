@@ -1,7 +1,0 @@
-%h2= @article.title
-%br/
-%p= @article.content
-
-= link_to 'back', :root
-= link_to 'edit', edit_article_path(@article)
-= link_to 'delete', @article, method: :delete, data: {confirm: 'Are you sure?'}
