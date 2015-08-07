@@ -23,7 +23,7 @@ class Ticket < ActiveRecord::Base
     integer :status_id
   end
 
-  def cancel_or_finish(commit)
+  def cancel_or_finish(msg, user_id, commit)
     cancel = false
     finish = false
 
@@ -36,6 +36,8 @@ class Ticket < ActiveRecord::Base
     #select + pluck melhora a performance da consulta
     self.status_id = Status.select(:id).where(is_finished: finish,
      is_canceled: cancel).pluck(:id).first
+
+    self.create_automatic_comment_and_save(msg, user_id)
   end
 
   def canceled_or_finished?
@@ -50,15 +52,17 @@ class Ticket < ActiveRecord::Base
     self.status.is_canceled
   end
 
-  def define_open_status
+  def define_open_status_and_save
     self.status = Status.open
+    self.save
   end
 
   def define_waiting_status
     self.status = Status.waiting
   end
 
-  def create_automatic_comment(message, user_id)
+  def create_automatic_comment_and_save(message, user_id)
     self.comments.build(content: message, user_id: user_id, is_automatic: true )
+    self.save
   end
 end

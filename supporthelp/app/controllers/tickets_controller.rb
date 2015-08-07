@@ -21,8 +21,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = current_user.creator.build(ticket_params)
-    @ticket.define_open_status
-    if @ticket.save
+    if @ticket.define_open_status_and_save
       flash[:success] = 'Ticket criado com sucesso!'
       redirect_to @ticket
     else
@@ -58,28 +57,25 @@ class TicketsController < ApplicationController
   end
 
   def cancel_or_finish
-    @ticket.cancel_or_finish(params[:commit])
-    #cria um comentário descrevendo a ação
     msg = "Ticket #{@ticket.status.description} por: #{current_user.name}"
-    @ticket.create_automatic_comment(msg, current_user.id)
-    @ticket.save
+    @ticket.cancel_or_finish(msg, current_user.id, params[:commit])
     flash[:alert] = "Ticket #{@ticket.status.description}"
 
     TicketMailer.ticket_finished_email(@ticket).deliver_now if @ticket.finished?
-    
+
     redirect_to @ticket
   end
 
   def ticket_reopen
     @ticket.define_waiting_status
-    @ticket.create_automatic_comment("Ticket reaberto por: #{current_user.name}",
-     current_user.id)
-    @ticket.save
+    msg = "Ticket reaberto por: #{current_user.name}"
+    @ticket.create_automatic_comment_and_save(msg, current_user.id)
     flash[:success] = 'Ticket reaberto com sucesso!'
     redirect_to @ticket
   end
 
   private
+
   def set_ticket
     @ticket = Ticket.find(params[:id])
   end
