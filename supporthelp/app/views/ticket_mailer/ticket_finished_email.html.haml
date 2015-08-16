@@ -1,7 +1,5 @@
 %h1= t '.title', ticket_id: @ticket.id
 %p
-  = t '.body', ticket_name: @ticket.title, ticket_incharge: @ticket.incharge.name, ticket_finished_at: @ticket.comments.last.created_at.strftime("%H:%M - %d/%m/%Y")
-%p
-  = t '.confirm_link_html', link: link_to(@confirmation_link, @confirmation_link) |
+  = t '.body', ticket_name: @ticket.title, ticket_incharge: @ticket.incharge_name, ticket_finished_at: @ticket.comments.last.created_at.strftime("%H:%M - %d/%m/%Y")
 %p
   = t '.thanks_html'

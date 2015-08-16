@@ -1,3 +1,4 @@
+#controller dos tickets (principal)
 class TicketsController < ApplicationController
   before_action :set_ticket,  only: [:show, :edit, :destroy, :update_category,
   :update_priority, :valid_user, :get_in_charge, :cancel_or_finish, :ticket_reopen]
@@ -8,7 +9,7 @@ class TicketsController < ApplicationController
   respond_to :html
 
   def index
-    @search = do_search(params[:status_id])
+    @search = do_search(params[:status_id], current_user.id)
     @tickets = @search.results
   end
 
@@ -33,12 +34,14 @@ class TicketsController < ApplicationController
 
   #Faz o update via patch da categoria do ticket
   def update_category
-    redefine(@ticket.update(ticket_params))
+    @ticket.update(ticket_params)
+    flash[:success] = 'Ticket reclassificado com sucesso!'
     redirect_to @ticket
   end
   #Faz o update via patch da criticidade do ticket
   def update_priority
-    redefine(@ticket.update(ticket_params))
+    @ticket.update(ticket_params)
+    flash[:success] = 'Ticket reclassificado com sucesso!'
     redirect_to @ticket
   end
 
@@ -57,9 +60,8 @@ class TicketsController < ApplicationController
   end
 
   def cancel_or_finish
-    msg = "Ticket #{@ticket.status.description} por: #{current_user.name}"
-    @ticket.cancel_or_finish(msg, current_user.id, params[:commit])
-    flash[:alert] = "Ticket #{@ticket.status.description}"
+    @ticket.cancel_or_finish(current_user.id, params[:commit])
+    flash[:alert] = "Ticket #{@ticket.status_description}"
 
     TicketMailer.ticket_finished_email(@ticket).deliver_now if @ticket.finished?
 
@@ -69,7 +71,7 @@ class TicketsController < ApplicationController
   def ticket_reopen
     @ticket.define_waiting_status
     msg = "Ticket reaberto por: #{current_user.name}"
-    @ticket.create_automatic_comment_and_save(msg, current_user.id)
+    @ticket.create_automatic_comment_and_save(current_user.id, msg)
     flash[:success] = 'Ticket reaberto com sucesso!'
     redirect_to @ticket
   end
@@ -80,15 +82,15 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
   end
 
-  def do_search(status_id)
+  def do_search(status_id, current_user_id)
     Ticket.search do
       if current_user.attendant?
         any_of do
-          with(:incharge_id, current_user.id)
+          with(:incharge_id, current_user_id)
           with(:incharge_id, nil)
         end
       else
-        with(:creator_id, current_user.id)
+        with(:creator_id, current_user_id)
       end
       fulltext params[:search]
       with(:status_id, status_id) if status_id
@@ -98,14 +100,6 @@ class TicketsController < ApplicationController
 
   def valid_user
     redirect_to :root unless current_user == @ticket.creator || current_user.attendant?
-  end
-
-  def redefine(redefined)
-    if redefined
-      flash[:success] = 'Ticket reclassificado com sucesso!'
-    else
-      flash[:error] = 'Não foi possível reclassificar este ticket'
-    end
   end
 
   def ticket_params

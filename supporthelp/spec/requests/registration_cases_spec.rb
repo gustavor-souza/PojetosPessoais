@@ -5,13 +5,13 @@ RSpec.describe "RegistrationCases", type: :request do
   before do
     visit root_path
     click_on('Cadastrar')
-    @user = FactoryGirl.create(:user)
-    fill_in(:user_name,                   with: @user.name)
-    fill_in(:user_ddd,                    with: @user.ddd)
-    fill_in(:user_phone,                  with: @user.phone)
-    fill_in(:user_email,                  with: @user.email)
-    fill_in(:user_password     ,          with: @user.password)
-    fill_in(:user_password_confirmation,  with: @user.password)
+    user = FactoryGirl.create(:user)
+    fill_in(:user_name,                   with: user.name)
+    fill_in(:user_ddd,                    with: user.ddd)
+    fill_in(:user_phone,                  with: user.phone)
+    fill_in(:user_email,                  with: user.email)
+    fill_in(:user_password     ,          with: user.password)
+    fill_in(:user_password_confirmation,  with: user.password)
   end
 
   context "failure" do

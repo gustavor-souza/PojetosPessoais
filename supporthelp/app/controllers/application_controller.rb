@@ -1,3 +1,4 @@
+#controller da aplicação, determinados os parametros para usuários(devise)
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 

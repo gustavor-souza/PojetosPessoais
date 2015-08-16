@@ -9,7 +9,7 @@
         %small.text-muted
           %i.glyphicon.glyphicon-time
           = @ticket.created_at.strftime("%d/%m/%Y - %H:%M")
-      .timeline-body
+      .timeline-body.li-left-box
       %p= comment.content
 -else
   %li.timeline-inverted
@@ -19,14 +19,14 @@
     - else
       .timeline-badge.info
         %i.glyphicon.glyphicon-credit-card
-    .timeline-panel
+    .timeline-panel.li-right-box
       .timeline-heading
         %h4.timeline-title
           - if comment.automatic?
             MENSAGEM AUTOMÁTICA DO SISTEMA
           - else
             Comentário de
-            = comment.user.name
+            = comment.user_name
       %p
         %small.text-muted
           %i.glyphicon.glyphicon-time

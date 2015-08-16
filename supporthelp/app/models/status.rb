@@ -4,6 +4,9 @@ class Status < ActiveRecord::Base
 
   validates :description, presence: true, length: { minimum: 1, maximum: 50 }
 
+  scope :finished, -> { Status.where(is_finished: true) }
+  scope :canceled, -> { Status.where(is_canceled: true) }
+
   scope :waiting, -> { where(is_waiting: true).first }
   scope :waiting_for_user, -> { where(is_waiting_for_user: true).first }
   scope :open, -> { where(is_open: true).first }

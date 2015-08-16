@@ -10,8 +10,8 @@
     %tr
       %td= @ticket.id
       %td= @ticket.created_at.strftime('%d/%m/%Y - %H:%M')
-      %td= @ticket.status.description
-      %td= @ticket.system.description
+      %td= @ticket.status_description
+      %td= @ticket.system_description
       %td= dead_line(@ticket.created_at)
     %tr
       %td{colspan: 5}
@@ -22,7 +22,7 @@
             = f.collection_select :category_id, Category.by_system(@ticket.system_id),
              :id, :description,
             { include_blank: false}, {class: 'form-control'}
-            = f.submit 'alterar', class: 'label-error'
+            = f.submit 'alterar', class: 'label-error', id: :change_category
           - else
             = f.collection_select :category_id, Category.by_system(@ticket.system_id),
              :id, :description,{ include_blank: false}, {class: 'form-control', disabled: true}
@@ -33,7 +33,7 @@
           - if can?(:attend, :ticket) && !@ticket.canceled_or_finished?
             = f.collection_select :priority_id, Priority.all, :id, :description,
             {include_blank: false}, class: 'form-control'
-            = f.submit 'alterar', class: 'label-error' if can? :attend, :ticket
+            = f.submit 'alterar', class: 'label-error', id: :change_priority if can? :attend, :ticket
           - else
             = f.collection_select :priority_id, Priority.all, :id, :description,
             {include_blank: false}, {class: 'form-control', disabled: true}

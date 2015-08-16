@@ -1,70 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
+  it { should validate_presence_of(:name) }
+  it { should validate_length_of(:name).is_at_least(5).is_at_most(100) }
+  it { should allow_value('user@example.com').for(:email )}
+  it { should_not allow_value('userexample.com').for(:email )}
+  it { should validate_presence_of(:ddd) }
+  it { should validate_length_of(:ddd).is_equal_to(2) }
+  it { should validate_presence_of(:phone) }
+  it { should validate_length_of(:phone).is_at_least(8).is_at_most(9) }
 
-  before{ @user = FactoryGirl.create(:user) }
-
-  context "validates name" do
-    it 'present' do
-      @user.name = nil
-      expect(@user).not_to be_valid
-    end
-
-    it 'minimum length' do
-      @user.name = 'aaaa'
-      expect(@user).not_to be_valid
-    end
-
-    it 'maximum length' do
-      @user.name = 'a' * 601
-      expect(@user).not_to be_valid
-    end
-  end
-
-  context "validates email" do
-    it 'present' do
-      @user.email = nil
-      expect(@user).not_to be_valid
-    end
-
-    it 'is valid' do
-      @user.email = 'test@test'
-      expect(@user).not_to be_valid
-    end
-  end
-
-  context "validates phone numbers" do
-    it 'ddd present' do
-      @user.ddd = nil
-      expect(@user).not_to be_valid
-    end
-
-    it 'phone present' do
-      @user.phone = nil
-      expect(@user).not_to be_valid
-    end
-
-    it 'ddd length' do
-      @user.ddd = '999'
-      expect(@user).not_to be_valid
-      @user.ddd = '9'
-      expect(@user).not_to be_valid
-      @user.ddd = '99'
-      expect(@user).to be_valid
-    end
-
-    it 'phone length' do
-      @user.phone = '9999999999'
-      expect(@user).not_to be_valid
-      @user.phone = '9999999'
-      expect(@user).not_to be_valid
-      @user.phone = '999999999'
-      expect(@user).to be_valid
-      @user.phone = '99999999'
-      expect(@user).to be_valid
-    end
-  end
-
-
-
+  it { should belong_to(:company) }
+  it { should have_many(:comments) }
+  it { should have_many(:incharge).with_foreign_key('incharge_id') }
+  it { should have_many(:creator).with_foreign_key('creator_id') }
 end

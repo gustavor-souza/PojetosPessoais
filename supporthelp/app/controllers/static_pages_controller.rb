@@ -1,3 +1,4 @@
+#contreller das paginas estáticas
 class StaticPagesController < ApplicationController
   def index
   end
