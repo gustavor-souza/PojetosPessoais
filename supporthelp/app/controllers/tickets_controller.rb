@@ -63,7 +63,7 @@ class TicketsController < ApplicationController
     @ticket.cancel_or_finish(current_user.id, params[:commit])
     flash[:alert] = "Ticket #{@ticket.status_description}"
 
-    TicketMailer.ticket_finished_email(@ticket).deliver_now if @ticket.finished?
+    MailingWorker.perform_async(@ticket.id) if @ticket.finished?
 
     redirect_to @ticket
   end
