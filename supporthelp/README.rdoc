@@ -4,7 +4,7 @@ Repositório criado com função de estudo do framework ruby on rails
 
 A idéia aqui é desenvolver um projeto simple onde seja possível explorar funcionalidades básicas do desenvolvimento web, ex: upload de imagens, autenticação de usuários, envio de emails, montagem dinamica com ajax, search etc..
 
-Os specs foram feitos focados nos testes de aceitação com capybara, sendo testes unitários reservados as validações das models.
+Os specs foram feitos focados nos testes de aceitação com capybara, sendo testes unitários reservados as validações das models, contudo ainda estão faltando os specs das regras de negocios.
 
 Abaixo o ultimo esquema feito no programa "freemind".
 
